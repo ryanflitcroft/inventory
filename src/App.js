@@ -1,24 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { useState,
+  useEffect } from 'react';
+import { BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+  Redirect
+} from 'react-router-dom';
+import Auth from './Components/Auth';
+import InventoryList from './Components/InventoryList';
+import InventoryDetail from './Components/InventoryDetail';
 
 function App() {
+  const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
+
+  useEffect(() => {
+
+  }, [user]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          {
+            !user
+              ? <Auth />
+              : <InventoryList />
+          }
+        </Route>
+        <Route exact path='/inventory-list'>
+          {
+            user
+              ? <InventoryList />
+              : <Redirect to='/' />
+          }
+        </Route>
+        <Route exact path='/inventory-detail/:id'>
+          {
+            user
+              ? <InventoryDetail />
+              : <Redirect to='/' />
+          }
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
