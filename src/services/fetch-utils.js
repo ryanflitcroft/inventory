@@ -20,6 +20,32 @@ export async function signIn(email, password) {
 export async function signUp(email, password) {
   const response = await client.auth.signUp({ email, password });
 
-  console.log('||response', response);
   return response.user;
+}
+
+export async function getInventory() {
+  const response = await client
+    .from('inventory')
+    .select();
+
+  return checkError(response);
+}
+
+export async function getInventoryItem(id) {
+  const response = await client
+    .from('inventory')
+    .select()
+    .match({ id })
+    .single();
+
+  return checkError(response);
+}
+
+export async function createInventoryItem(item) {
+  const response = await client
+    .from('inventory')
+    .select()
+    .insert([{ item }]);
+
+  return checkError(response);
 }

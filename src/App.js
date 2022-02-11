@@ -13,7 +13,6 @@ function App() {
 
   useEffect(() => {
     const data = getUser();
-    console.log('||data', data);
     setUser(data);
   }, [user]);
 

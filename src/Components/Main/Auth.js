@@ -12,15 +12,11 @@ export default function Auth({ setUser }) {
     e.preventDefault();
     if (hasAccount) {
       const user = await signIn(email, password);
-      console.log('||signinuser: ', user);
 
-      // FIXME: 
       setUser(user);
     } else {
       const user = await signUp(email, password);
-      console.log('||signupuser: ', user);
 
-      // FIXME: 
       setUser(user);
     }
   }
