@@ -4,9 +4,9 @@ import { useEffect,
 import { BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
+  NavLink
 } from 'react-router-dom';
-import { signOut } from '../../services/fetch-utils';
 import Auth from './Auth';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
@@ -18,8 +18,8 @@ export default function Main({ user,
   return (
     <>
       <main>
-        <button onClick={signOut}>SignOut</button>
         <Router>
+          <NavLink to='/inventory-list'>Inventory List</NavLink>
           <Switch>
             <Route exact path='/'>
               {

@@ -49,3 +49,12 @@ export async function addInventoryItem(item) {
 
   return checkError(response);
 }
+
+export async function deleteItem(id) {
+  const response = await client
+    .from('inventory')
+    .delete()
+    .match({ id });
+
+  return checkError(response);
+}
