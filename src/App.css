@@ -35,3 +35,19 @@ form p span {
   font-weight: bold;
   margin: 0.5em;
 }
+
+ul li {
+  display: flex;
+  width: 200px;
+  justify-content:space-between;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  font-size: 1.15em;
+  cursor: pointer;
+}
