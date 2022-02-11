@@ -1,9 +1,21 @@
 import React from 'react';
+import { useState,
+  useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import InventoryItem from './InventoryItem';
+import { getInventory } from '../../services/fetch-utils';
 
-export default function InventoryList({ inventory }) {
-  console.log('||inv', inventory);
+export default function InventoryList() {
+
+  const [inventory, setInventory] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const data = await getInventory();
+      setInventory(data);
+    }
+    getData();
+  }, []);
 
   return (
     <>

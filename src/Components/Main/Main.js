@@ -6,8 +6,7 @@ import { BrowserRouter as Router,
   Route,
   Redirect
 } from 'react-router-dom';
-import { signOut, 
-  getInventory } from '../../services/fetch-utils';
+import { signOut } from '../../services/fetch-utils';
 import Auth from './Auth';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
@@ -15,16 +14,6 @@ import AddInventory from './AddInventory';
 
 export default function Main({ user,
   setUser }) {
-
-  const [inventory, setInventory] = useState([]);
-
-  useEffect(() => {
-    async function getData() {
-      const data = await getInventory();
-      setInventory(data);
-    }
-    getData();
-  }, []);
 
   return (
     <>
@@ -36,13 +25,13 @@ export default function Main({ user,
               {
                 !user
                   ? <Auth setUser={setUser} />
-                  : <InventoryList inventory={inventory} />
+                  : <InventoryList />
               }
             </Route>
             <Route exact path='/inventory-list'>
               {
                 user
-                  ? <InventoryList inventory={inventory} />
+                  ? <InventoryList />
                   : <Redirect to='/' />
               }
             </Route>

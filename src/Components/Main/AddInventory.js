@@ -1,14 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { addInventoryItem } from '../../services/fetch-utils';
 
 export default function AddInventory() {
   const [item, setItem] = useState('');
-  const [quantity, setQuantity] = useState(0);
-  const [par, setPar] = useState(0);
-  const [cost, setCost] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState('');
+  const [par, setPar] = useState('');
+  const [cost, setCost] = useState('');
+  const [price, setPrice] = useState('');
   const [sku, setSku] = useState('');
+
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,11 +24,13 @@ export default function AddInventory() {
       price,
       sku
     });
+
+    history.push('/inventory-list');
   }
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <label htmlFor='item'>Item</label>
         <input onChange={(e) => setItem(e.target.value)}
           value={item}
@@ -50,13 +55,15 @@ export default function AddInventory() {
           value={cost}
           type='number'
           name='cost'
-          min='0' />
+          min='0'
+          step='0.01' />
         <label htmlFor='price'>Price</label>
         <input onChange={(e) => setPrice(e.target.value)}
           value={price}
           type='number'
           name='price'
-          min='0' />
+          min='0'
+          step='0.01' />
         <label htmlFor='sku'>SKU</label>
         <input onChange={(e) => setSku(e.target.value)}
           value={sku}

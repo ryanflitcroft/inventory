@@ -43,7 +43,6 @@ export async function getInventoryItem(id) {
 }
 
 export async function addInventoryItem(item) {
-  console.log('||item: ', item);
   const response = await client
     .from('inventory')
     .insert([item]);
