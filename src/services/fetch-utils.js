@@ -2,7 +2,7 @@ import { client, checkError } from './client';
 
 export default function getUser() {
 
-  return client.auth.session;
+  return client.auth.session();
 }
 
 export async function signOut() {
@@ -20,5 +20,6 @@ export async function signIn(email, password) {
 export async function signUp(email, password) {
   const response = await client.auth.signUp({ email, password });
 
+  console.log('||response', response);
   return response.user;
 }

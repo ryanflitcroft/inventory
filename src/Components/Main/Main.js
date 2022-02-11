@@ -7,16 +7,19 @@ import { BrowserRouter as Router,
 import Auth from './Auth';
 import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
+import { signOut } from '../../services/fetch-utils';
 
-export default function Main({ user }) {
+export default function Main({ user,
+  setUser }) {
   return (
     <>
       <main>
+        <button onClick={signOut}>SignOut</button>
         <Router>
           <Switch>
             <Route exact path='/'>
               {!user
-                ? <Auth />
+                ? <Auth setUser={setUser} />
                 : <InventoryList />}
             </Route>
             <Route exact path='/inventory-list'>

@@ -13,13 +13,15 @@ function App() {
 
   useEffect(() => {
     const data = getUser();
+    console.log('||data', data);
     setUser(data);
   }, [user]);
 
   return (
     <>
       <Header user={user} />
-      <Main user={user} />
+      <Main user={user}
+        setUser={setUser} />
       <Footer />
     </>
   );
