@@ -27,6 +27,7 @@ export async function getInventory() {
   const response = await client
     .from('inventory')
     .select();
+    // .order({ ascending: true });
 
   return checkError(response);
 }
@@ -41,11 +42,11 @@ export async function getInventoryItem(id) {
   return checkError(response);
 }
 
-export async function createInventoryItem(item) {
+export async function addInventoryItem(item) {
+  console.log('||item: ', item);
   const response = await client
     .from('inventory')
-    .select()
-    .insert([{ item }]);
+    .insert([item]);
 
   return checkError(response);
 }
