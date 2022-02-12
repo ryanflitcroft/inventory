@@ -22,11 +22,8 @@ export default function Main({ user,
     <>
       <main>
         <Router>
-          {
-            history !== '/inventory-list'
-            && <NavLink to='/inventory-list'>Inventory List</NavLink>
-          }
-
+          {/* TODO: render NavLink conditional to url */}
+          <NavLink to='/inventory-list'>Inventory List</NavLink>
           <Switch>
             <Route exact path='/'>
               {

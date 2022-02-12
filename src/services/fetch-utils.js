@@ -27,7 +27,6 @@ export async function getInventory() {
   const response = await client
     .from('inventory')
     .select();
-    // .order({ ascending: true });
 
   return checkError(response);
 }

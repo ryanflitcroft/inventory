@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function InventoryItem({ item }) {
-  console.log('||item ', item);
+
   return (
     <>
       <Link to={`/inventory-detail/${item.id}`}>
@@ -15,7 +15,6 @@ export default function InventoryItem({ item }) {
           </span>
         </li>      
       </Link>
-
     </>
   );
 }
