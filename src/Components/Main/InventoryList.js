@@ -4,10 +4,13 @@ import { useState,
 import { Link } from 'react-router-dom';
 import InventoryItem from './InventoryItem';
 import { getInventory } from '../../services/fetch-utils';
+// import { useRouteMatch } from 'react-router-dom';
 
 export default function InventoryList() {
 
   const [inventory, setInventory] = useState([]);
+  // const match = useRouteMatch();
+  // console.log('||match', match);
 
   useEffect(() => {
     async function getData() {
@@ -19,9 +22,6 @@ export default function InventoryList() {
 
   return (
     <>
-      <Link to='/add-inventory'>
-        <button>Add Inventory</button>
-      </Link>
       <h2>Current Inventory</h2>
       <section>
         <ul>
@@ -32,6 +32,9 @@ export default function InventoryList() {
             )
           }
         </ul>
+        <Link to='/add-inventory'>
+          <button>Add Inventory</button>
+        </Link>
       </section>
     </>
   );

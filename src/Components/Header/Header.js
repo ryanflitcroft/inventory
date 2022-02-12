@@ -6,6 +6,7 @@ export default function Header() {
     <>
       <header>
         <button onClick={signOut}>SignOut</button>
+        <h1>Inventory</h1>
       </header>
     </>
   );

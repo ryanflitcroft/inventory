@@ -1,6 +1,4 @@
 import React from 'react';
-import { useEffect,
-  useState } from 'react';
 import { BrowserRouter as Router,
   Switch,
   Route,
@@ -12,14 +10,23 @@ import InventoryList from './InventoryList';
 import InventoryDetail from './InventoryDetail';
 import AddInventory from './AddInventory';
 
+import { useEffect } from 'react';
+
 export default function Main({ user,
   setUser }) {
+
+  useEffect(() => {
+  }, []);
 
   return (
     <>
       <main>
         <Router>
-          <NavLink to='/inventory-list'>Inventory List</NavLink>
+          {
+            history !== '/inventory-list'
+            && <NavLink to='/inventory-list'>Inventory List</NavLink>
+          }
+
           <Switch>
             <Route exact path='/'>
               {
